@@ -1,4 +1,5 @@
-﻿using Rocket.API;
+﻿using Anomoly.Core.Library.UnturnedStore;
+using Rocket.API;
 using Rocket.API.Collections;
 using Rocket.API.Serialisation;
 using Rocket.Core.Logging;
@@ -15,6 +16,9 @@ namespace Anomoly.SalvageTime
 {
     public class SalvageTimePlugin: RocketPlugin<SalvageTimeConfiguration>
     {
+
+        private const int US_PRODUCT_ID = 1476;
+
         public static SalvageTimePlugin Instance { get; private set; }
         protected override void Load()
         {
@@ -25,6 +29,10 @@ namespace Anomoly.SalvageTime
 
             Logger.Log($"{string.Format("SalvageTime v{0}", Assembly.GetName().Version)} by Anomoly has loaded!");
             Logger.Log("Need support? Join my Discord server @ https://discord.gg/rVH9e7Kj9y");
+
+            bool isUpToDate = UnturnedStoreAPI.IsUpdateToDate(US_PRODUCT_ID, Assembly.GetName().Version);
+            if (!isUpToDate)
+                Logger.Log("[Update Detected] An update has been detected for SalvageTime! Please download the latest version @ https://unturnedstore.com/products/1476");
         }
 
         protected override void Unload()
