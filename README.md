@@ -3,7 +3,7 @@ A RocketMod plugin to set the salvage time of a player via command or permission
 
 ## Commands
 - `/salvagetime [<player> <time>]` - Show the current salvage time / set a player's salvage time
-  - Aliases: `/ad`
+  - Aliases: `/stime`
   - Permission: `salvagetime`,`salvagetime.set`
 
 ## Configuration
